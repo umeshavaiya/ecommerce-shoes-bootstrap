@@ -1,0 +1,219 @@
+.details__container {
+    height: 100%;
+    width: 100%;
+}
+
+.homeImage__details {
+    height: 900px;
+    background: url(../images/Mask\ Group.jpg) no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: cover;
+}
+
+.BackgroundFilter {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(212, 101, 222, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.part__cont {
+    display: flex;
+    height: 100%;
+}
+
+.wi__class1 {
+    width: 50%;
+    height: 100%;
+}
+
+.running__shoes img {
+    width: 70%;
+    height: 82%;
+    margin-top: 256px;
+    margin-left: 43x;
+    position: relative;
+    z-index: 1;
+}
+
+.shoes__circle {
+    width: 510px;
+    height: 510px;
+    border-radius: 50%;
+    background: #ffff66;
+    border: 1px solid #d8cc85;
+    mask-image: linear-gradient(to bottom, rgb(199, 194, 194, 1), rgba(255, 255, 255, 0.5));
+    margin-top: -470px;
+    margin-left: 100px;
+}
+
+.wi__class2 {
+    width: 50%;
+    height: 100%;
+}
+
+.shoes__details {
+    padding-top: 300px;
+    padding-right: 100px;
+    text-align: left;
+}
+
+.shoes__details h1 {
+    color: white;
+    font-size: 120px;
+}
+
+.shoes__details p {
+    color: white;
+    font-size: 35px;
+}
+
+.shoes__details h2 {
+    color: white;
+    font-size: 60px;
+}
+
+.button2 {
+    padding: 11px 39px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 38px 55px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: #3a3a3a;
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    margin-left: 50px;
+    font-weight: 700;
+    border: white;
+}
+
+.button2:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.1);
+}
+
+.noHover {
+    pointer-events: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+@media (min-width:2560px) {
+    .shoes__circle {
+        width: 610px;
+        height: 610px;
+        margin-top: -625px;
+        margin-left: 100px;
+    }
+    .button2 {
+        margin: 17px 55px;
+        padding: 15px 39px;
+    }
+}
+
+@media (max-width:1440px) {
+    .shoes__circle {
+        width: 400px;
+        height: 400px;
+        margin-top: -370px;
+        margin-left: 60px;
+    }
+    .button2 {
+        margin: 12px 55px;
+    }
+    .shoes__details h1 {
+        font-size: 100px;
+    }
+    .shoes__details p {
+        font-size: 28px;
+    }
+}
+
+@media (max-width:1440px) {
+    .shoes__details {
+        padding-top: 260px;
+        padding-right: 60px;
+    }
+    .button2 {
+        margin: 28px 55px;
+    }
+}
+
+@media (max-width:1024px) {
+    .shoes__circle {
+        width: 300px;
+        height: 300px;
+        margin-top: -260px;
+        margin-left: 40px;
+    }
+    .shoes__details h1 {
+        font-size: 70px;
+    }
+    .shoes__details p {
+        font-size: 21px;
+    }
+    .homeImage__details {
+        height: 710px;
+    }
+    .button2 {
+        margin: 28px 55px;
+    }
+}
+
+@media (max-width:768px) {
+    .shoes__details h1 {
+        font-size: 55px;
+    }
+    .shoes__details p {
+        font-size: 17px;
+    }
+    .button2 {
+        margin: 12px 20px;
+    }
+    .running__shoes img {
+        margin-top: 315px;
+        margin-left: 43px;
+    }
+    .shoes__circle {
+        width: 250px;
+        height: 250px;
+        margin-top: -210px;
+        margin-left: 40px;
+    }
+    .homeImage__details {
+        height: 660px;
+    }
+}
+
+@media (max-width:425px) {
+    .homeImage__details {
+        height: 540px;
+    }
+}
+
+@media (max-width:550px) {
+    .shoes__details {
+        padding-top: 230px;
+        padding-right: 0px;
+    }
+    .shoes__details h1 {
+        font-size: 40px;
+    }
+    .button2 {
+        padding: 10px 20px;
+        margin: 22px 14px;
+    }
+    .shoes__circle {
+        width: 180px;
+        height: 180px;
+        margin-top: -166px;
+        margin-left: 28px;
+    }
+}
