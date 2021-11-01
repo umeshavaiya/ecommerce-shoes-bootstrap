@@ -1,0 +1,303 @@
+    .navbar-brand {
+        font-size: 45px;
+        color: black;
+        font-weight: 700;
+        margin-right: 5rem;
+    }
+    
+    .navbar {
+        box-shadow: 1px 4px 296px -27px rgba(0, 0, 0, 0.69);
+        -webkit-box-shadow: 1px 4px 296px -27px rgba(0, 0, 0, 0.69);
+        -moz-box-shadow: 1px 4px 296px -27px rgba(0, 0, 0, 0.69);
+        padding-top: 0;
+        padding-bottom: 0;
+        /* background: aquamarine; */
+    }
+    
+    .container-fluid {
+        width: 90%;
+        margin: auto;
+    }
+    
+    .nav-link {
+        font-size: 25px;
+        padding-right: 5rem !important;
+        font-weight: 500;
+    }
+    
+    .me-auto {
+        margin-right: 0 !important;
+    }
+    
+    .d-flex {
+        padding-left: 100px;
+        width: 35%;
+    }
+    
+    .form-control {
+        border-radius: 50px;
+        background-color: #ececec;
+        border: 1px solid black;
+    }
+    
+    .icon__color .fas {
+        color: black;
+        font-size: 25px;
+        padding-right: 40px;
+    }
+    
+    .icon__color {
+        padding-left: 50px;
+        display: flex;
+    }
+    
+    .shoes__pageMI {
+        width: 100%;
+        display: flex;
+    }
+    
+    .shoes__slider {
+        width: 20%;
+    }
+    
+    .shoes__slider__0 {
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        text-align: left;
+    }
+    
+    .shoes__slider__1 {
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        text-align: left;
+    }
+    
+    .shoes__slider__1 p {
+        font-size: 20px;
+        margin-bottom: 0.3rem;
+        color: #606060;
+    }
+    
+    .size__button p {
+        border: 1px solid;
+        display: inline-block;
+        padding: 0px;
+        border-radius: 10px;
+        width: 60px;
+        text-align: center;
+    }
+    
+    .size__button {
+        justify-content: space-between;
+        display: flex;
+    }
+    
+    .size__button__6 {
+        justify-content: normal;
+    }
+    
+    .size__button__6 p {
+        margin-right: 10px;
+    }
+    
+    .size__button p {
+        transition: transform .4s;
+    }
+    
+    .size__button p:hover {
+        transform: scale(1.1);
+    }
+    
+    .price__button {
+        margin-left: 10px;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+    
+    .price__button input[type=checkbox] {
+        -ms-transform: scale(2);
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        transform: scale(2);
+        padding: 10px;
+    }
+    /* Might want to wrap a span around your checkbox text */
+    
+    .checkboxtext {
+        display: inline;
+    }
+    
+    .color__button {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .color__button h6 {
+        font-size: 15px;
+        color: #afafaf;
+    }
+    
+    .color__button p {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6))
+    }
+    
+    .shoes__part {
+        width: 80%;
+    }
+    
+    .shoes__part__1 {
+        padding: 50px;
+    }
+    
+    .sort__by select {
+        width: 250px;
+        border-radius: 20px;
+        height: 35px;
+        font-size: 18px;
+        padding-left: 15px;
+    }
+    
+    .yellow__shoes {
+        text-align: left;
+        display: flex;
+        padding-top: 15px;
+        padding: 0 50px;
+        margin-bottom: 10px;
+        /* justify-content: space-between; */
+    }
+    
+    .menShoes__footer {
+        padding-top: 20px;
+    }
+    
+    @media (max-width:1550px) {
+        .d-flex {
+            padding-left: 10px;
+        }
+    }
+    
+    @media (max-width:1024px) {
+        .container-fluid {
+            width: 100%;
+        }
+        .navbar-brand {
+            margin-right: 2rem;
+        }
+        .nav-link {
+            font-size: 20px;
+            padding-right: 1rem !important;
+            font-weight: 500;
+        }
+    }
+    
+    @media (max-width:1024px) {
+        .navbar-expand-lg .navbar-nav .nav-link {
+            padding-right: 0 rem;
+            padding-left: 0rem;
+        }
+        .shoes__slider {
+            display: none;
+        }
+        .shoes__part {
+            width: 100%;
+        }
+        .yellow__shoes .ant-card {
+            margin: 5px;
+        }
+    }
+    
+    @media (max-width:1420px) {
+        .container-fluid {
+            width: 100%;
+        }
+    }
+    
+    @media (max-width:768px) {
+        .yellow__shoes {
+            flex-direction: column;
+            margin-bottom: 0px;
+        }
+    }
+    
+    @media (max-width:1440px) {
+        .yellow__shoes {
+            padding: 0;
+        }
+        .card__Antds {
+            width: 250px !important;
+        }
+    }
+    
+    @media (max-width:1024px) {
+        .card__Antds {
+            width: 200px !important;
+        }
+    }
+    
+    @media (max-width:768px) {
+        .card__Antds {
+            width: 350px !important;
+        }
+    }
+    
+    @media (max-width:425px) {
+        .card__Antds {
+            width: 200px !important;
+        }
+        .card__Antds h3 {
+            font-size: 15px;
+        }
+        .size__button {
+            align-items: baseline;
+        }
+        .shoes__part__1 {
+            padding: 10px !important;
+        }
+        .card__Antds .ant-card-cover img {
+            padding: 20px !important;
+        }
+        .sort__by select {
+            width: 180px;
+        }
+        .nav__size {
+            padding: 10px 0 !important;
+        }
+    }
+    
+    .yellow__shoes__0 {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    @media (max-width: 320px) {
+        .yellow__shoes .ant-card {
+            margin: 2px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .shoes__part__1 {
+            padding: 25px;
+        }
+        .nav__size {
+            padding: 35px 0;
+        }
+    }
+    
+    @media (max-width: 990px) {
+        .container-fluid a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    
+    .menu__color {
+        color: black;
+        background: white;
+        border: 1px solid;
+        margin-top: 5px;
+    }

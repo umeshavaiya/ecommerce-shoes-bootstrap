@@ -1,0 +1,224 @@
+    .main__footer {
+        width: 100%;
+        background-color: #f9f6fd;
+    }
+    
+    .footer__components {
+        width: 100%;
+        /* margin: 0% 20%; */
+        display: flex;
+    }
+    
+    .footer__components__1 {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .shoes__component {
+        width: 33%;
+        height: 100%;
+    }
+    
+    .shoes__component h2 {
+        margin-top: 45px;
+        font-size: 35px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    
+    .Shoes__list {
+        width: 40%;
+        margin: 0% 35%;
+        text-align: left;
+    }
+    
+    .Shoes__list p {
+        color: #717171;
+        font-size: 25px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    
+    .Policies__component {
+        width: 60%;
+        height: 100%;
+    }
+    
+    .Policies__component h2 {
+        margin-top: 45px;
+        font-size: 35px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    
+    .policies__list {
+        width: 70%;
+        margin: 0% 15%;
+        text-align: left;
+    }
+    
+    .policies__list p {
+        color: #717171;
+        font-size: 25px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    
+    .policies__list p:hover {
+        transform: scale(1.1);
+    }
+    
+    .follow__component {
+        width: 30%;
+        /* margin-top: 175px; */
+        padding-top: 75px;
+    }
+    
+    .follow__component p {
+        color: #717171;
+    }
+    
+    .nohover {
+        pointer-events: none;
+    }
+    
+    .icon__list {
+        margin-top: 30px;
+    }
+    
+    .icon__list2 {
+        margin-top: 20px;
+    }
+    
+    .all__icons {
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    
+    .all__icons:hover {
+        transform: scale(1.3);
+    }
+    
+    .logo__component img {
+        background: #717171;
+        width: 105px;
+    }
+    
+    @media (max-width:1440px) {
+        .footer__components {
+            width: 80%;
+            margin: auto;
+        }
+    }
+    
+    @media (max-width:1024px) {
+        .footer__components {
+            width: 95%;
+        }
+    }
+    
+    @media (max-width:768px) {
+        .Shoes__list {
+            margin: 0% 0%;
+        }
+        .policies__list {
+            width: 100%;
+            margin: 0;
+        }
+    }
+    
+    @media (max-width:425px) {
+        .footer__components__1 {
+            width: 100%;
+        }
+        .footer__components {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+        .shoes__component {
+            width: 35%;
+        }
+        .Shoes__list {
+            text-align: left;
+            width: 60%;
+            margin: auto;
+        }
+        .Policies__component {
+            width: 75%;
+        }
+        .policies__list {
+            width: 60%;
+            margin: auto;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .follow__component {
+            margin-top: 0px;
+            width: 60%;
+            margin: auto;
+        }
+        .icon__list {
+            display: flex;
+        }
+        .Shoes__list p {
+            margin-bottom: 0;
+        }
+        .policies__list p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+        .Policies__component h2 {
+            font-size: 30px;
+        }
+        .shoes__component h2 {
+            font-size: 30px;
+        }
+        .shoes__component p {
+            font-size: 18px;
+        }
+    }
+    
+    .rights {
+        background-color: #515151;
+        height: 40px;
+        text-align: center;
+    }
+    
+    .rights h2 {
+        color: white;
+        font-size: 25px;
+        margin-bottom: 0px;
+        font-weight: 300;
+    }
+    
+    .rights__text {
+        align-items: center;
+        padding-top: 5px;
+    }
+    
+    @media (max-width:425px) {
+        .rights h2 {
+            font-size: 18px;
+        }
+        .rights__text {
+            padding-top: 7px;
+        }
+        .rights {
+            margin-top: 5px;
+        }
+    }
+    
+    @media (max-width:320px) {
+        .rights h2 {
+            font-size: 17px;
+        }
+    }
+    /* @media (max-width:425px) {
+        .footer__componenets__1 {
+            visibility: hidden;
+        }
+    } */

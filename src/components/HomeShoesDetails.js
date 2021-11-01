@@ -24,7 +24,7 @@ function HomeShoesDetails() {
                                 <Fade bottom>
                                 <h1 className="noHover">Shoes Details</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat suscipit temporibus necessitatibus esse cupiditate hic harum nihil! Pariatur quia ad dicta, non sunt rem quod quibusdam nulla id facere corporis!</p>
-                                <div style={{ display: 'flex' }}>
+                                <div className="price__btn" style={{ display: 'flex' }}>
                                     <h2>$500</h2>
                                     <button className="button2">Buy Now</button>
                                 </div>

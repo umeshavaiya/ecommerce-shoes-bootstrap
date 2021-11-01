@@ -1,32 +1,137 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Navbar.css'
+import homeShoesimg from '../images/home.jpg'
+import styled from 'styled-components'
+import { CloseOutlined } from '@ant-design/icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Fade from "react-reveal/Fade";
+import { Link } from 'react-router-dom'
+import Login from '../pages/Login'
+
+
+
+
 function NavbarHad() {
+
+    const [burgerStatus, setBurgerStatus] = useState(false);
+    const [buttonPopup, setButtonPopup] = useState(false);
+    useEffect(() => {
+        document.title = "Welcome to Shoes"
+    }, []);
+
     return (
         <>
-            <div className="NavbarHad__main">
-                <div className="container-fluid">
-                    <nav className="nav nav__size">
-                        <h1>Shoes</h1>
-                        <div className='nav__comp'>
-                            <ul className='nav__comp__ul' >
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Men</a></li>
-                                <li><a href="">Women</a></li>
-                                <li><a href="">Kids</a></li>
-                                <li><a href="">Sale</a></li>
-                            </ul>
-                            <button className="login__btn" type="button" class="btn btn-secondary">Login</button>
-                        </div>
-                    </nav>
+            <div className="containers">
+                <img src={homeShoesimg} alt="Notebook" />
+                <div class="contents">
+                    <div className="fixed__nav">
+                        <Fade top>
+                            <nav className="nav nav__size">
+                                <Link to='/'>
+                                    <h1>Shoes</h1>
+                                </Link>
+                                <div className='nav__comp'>
+                                    <ul className='nav__comp__ul' >
+                                        <li><Link to="/">Home</Link></li>
+                                        <li><Link to="/shoes/men">Men</Link></li>
+                                        <li><Link to="/shoes/women">Women</Link></li>
+                                        <li><Link to="/shoes/kids">Kids</Link></li>
+                                        <li><Link to="">Sale</Link></li>
+                                    </ul>
+                                    <Link to='/'>
+                                        <i onClick={() => setButtonPopup(true)} class="fas fa-user"></i>
+                                    </Link>
+                                    <Link to="/checkout">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </Link>
+
+                                </div>
+                            </nav>
+                        </Fade>
+                    </div>
                     <div className="special__edition">
-                        <h2>SPECIAL EDITION</h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur </p>
-                        <p>adipisicing elit. Incidunt a nemo accusamus</p>
+                        <Fade cascade>
+                            <h2>SPECIAL EDITION</h2>
+                            <p>Lorem ipsum dolor sit, amet consec</p>
+                            <p>adipisicing elit.Incidunt </p>
+                        </Fade>
                     </div>
                 </div>
             </div>
+            <div onClick={() => setBurgerStatus(true)} className="menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <BurgerNav show={burgerStatus}>
+                <CloseWrapper className="user__name">
+                    <p>Hello,User</p>
+                    <CustomClose onClick={() => setBurgerStatus(false)} />
+                </CloseWrapper>
+                <div className="slider__text">
+                    <Link to="/">
+                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" class="btn btn-secondary">Login</button>
+                    </Link>
+                    <ul>
+                        <li><li>
+                            <Link to="/">
+                                <a className="menu_hover">Home </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/shoes/men">
+                                <a className="menu_hover">Men </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/shoes/women">
+                                <a className="menu_hover">Women </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/shoes/kids">
+                                <a className="menu_hover">Kides </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/">
+                                <a className="menu_hover">Sale </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                    </ul>
+                </div>
+            </BurgerNav>
+            <Login trigger={buttonPopup} fromTo='/'></Login>
+
         </>
     )
 }
 
 export default NavbarHad
+
+const BurgerNav = styled.div`
+            position:fixed;
+            top:0;
+            bottom:0;
+            left:0;
+            background: #d664f0 !important;
+            color:#fff;
+            width: 70%;
+            z-index: 16;
+            list-style: none;
+            padding: 30px 30px 0 50px;
+            display:flex;
+            flex-direction:column;
+            text-align: start;
+            font-size:20px;
+            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
+            transition: transform 0.4s !important;
+            `
+
+const CustomClose = styled(CloseOutlined)`
+            cursor:pointer;
+            `
+
+const CloseWrapper = styled.div`
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom:20px;
+            `

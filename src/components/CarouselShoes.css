@@ -22,6 +22,29 @@
     font-weight: 600;
 }
 
+@media (max-width:425px) {
+    .main {
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+    }
+    .shoesText>p {
+        font-size: 12px !important;
+    }
+    .InfiniteCarouselSlide {
+        width: 110px !important;
+    }
+}
+
+@media (max-width:375px) {
+    .InfiniteCarouselSlide {
+        width: 100px !important;
+    }
+    .main {
+        width: 100%;
+    }
+}
+
 @media (max-width:1270px) {
     .shoesText>p {
         margin-left: 15px;
@@ -32,6 +55,7 @@
     .shoesText>p {
         margin-left: 0px;
         font-size: 20px;
+        margin-bottom: 0;
     }
 }
 
@@ -47,14 +71,13 @@
         font-size: 15px;
     }
     .InfiniteCarouselFrame {
-        /* width: 80%; */
         overflow: hidden;
         margin: auto;
     }
-    .InfiniteCarouselArrowNext {
+    /* .InfiniteCarouselArrowNext {
         right: 0;
     }
     .InfiniteCarouselArrowPrev {
         left: 0;
-    }
+    } */
 }

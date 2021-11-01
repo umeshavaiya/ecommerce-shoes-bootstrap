@@ -6,17 +6,13 @@ import './CarouselShoes.css'
 
 
 function CarouselShoes() {
-    // const [disSize, setDisSize] = useState(4)
-
-    const isBigScreen = useMediaQuery({ query: '(max-width: 1024px)' })
-    console.log(isBigScreen, "isBigScreen")
-
 
     return (
         <div className='main'>
             <div>
                 <InfiniteCarousel
                     breakpoints={[
+                        { breakpoint: 426, settings: { slidesToShow: 3, slidesToScroll: 3, dots: false }, },
                         { breakpoint: 500, settings: { slidesToShow: 2, slidesToScroll: 2, dots: false }, },
                         { breakpoint: 769, settings: { slidesToShow: 3, slidesToScroll: 3, dots: false }, },
                         { breakpoint: 1025, settings: {dots: false }, },
