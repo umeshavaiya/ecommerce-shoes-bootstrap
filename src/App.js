@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import MenShoes from './components/Shoes/MenShoes';
 import WomenShoes from './components/Shoes/WomenShoes';
 import Kids from './components/Shoes/Kids';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/shoes/men" component={MenShoes} />
             <Route exact path="/shoes/women" component={WomenShoes} />
             <Route exact path="/shoes/kids" component={Kids} />
+            <Route exact path="/shoes/men/Productdetails" component={ProductDetails} />
           </Switch>
         </div>
       </Router >

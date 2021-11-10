@@ -53,7 +53,7 @@ function NavbarHad() {
                         <Fade cascade>
                             <h2>SPECIAL EDITION</h2>
                             <p>Lorem ipsum dolor sit, amet consec</p>
-                            <p>adipisicing elit.Incidunt </p>
+                            <p>adipisicing elit. Incidunt </p>
                         </Fade>
                     </div>
                 </div>

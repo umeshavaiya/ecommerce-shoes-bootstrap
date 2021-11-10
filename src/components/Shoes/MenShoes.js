@@ -320,17 +320,19 @@ function MenShoes() {
                         <div>
                             <div className="yellow__shoes">
                                 <div className="yellow__shoes__0">
-                                    <Card
-                                        className="card__Antds"
-                                        hoverable
-                                        style={{ width: 300, transition: "transform 0.4s", borderRadius: '15px' }}
-                                        cover={<img style={{ borderRadius: '15px', padding: "50px" }} alt="example" src={yellowShoes} />}
-                                    >
-                                        <Meta style={{ marginBottom: "8px" }} description="Sport Shoes" />
-                                        <Meta style={{ marginBottom: "8px", fontSize: '25px' }} title={<Title level={3} style={{ fontWeight: '700' }}>Running Shoes</Title>} />
-                                        <Meta style={{ marginBottom: "8px", fontSize: '25px' }} title={<Title level={3} style={{ fontWeight: '700' }}>$200</Title>} />
-                                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-                                    </Card>
+                                    <Link to="/shoes/men/Productdetails">
+                                        <Card
+                                            className="card__Antds"
+                                            hoverable
+                                            style={{ width: 300, transition: "transform 0.4s", borderRadius: '15px' }}
+                                            cover={<img style={{ borderRadius: '15px', padding: "50px" }} alt="example" src={yellowShoes} />}
+                                        >
+                                            <Meta style={{ marginBottom: "8px" }} description="Sport Shoes" />
+                                            <Meta style={{ marginBottom: "8px", fontSize: '25px' }} title={<Title level={3} style={{ fontWeight: '700' }}>Running Shoes</Title>} />
+                                            <Meta style={{ marginBottom: "8px", fontSize: '25px' }} title={<Title level={3} style={{ fontWeight: '700' }}>$200</Title>} />
+                                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+                                        </Card>
+                                    </Link>
                                     <Card
                                         className="card__Antds"
                                         hoverable

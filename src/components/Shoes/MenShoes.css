@@ -184,12 +184,15 @@
             width: 100%;
         }
         .navbar-brand {
-            margin-right: 2rem;
+            margin-right: 0rem;
         }
         .nav-link {
             font-size: 20px;
             padding-right: 1rem !important;
             font-weight: 500;
+        }
+        .navbar-collapse {
+            flex-grow: 0;
         }
     }
     
