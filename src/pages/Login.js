@@ -5,6 +5,7 @@ import { googleSignInInitiate, loginInitiate } from '../redux/action'
 import './Login.css'
 import { CloseOutlined } from '@ant-design/icons';
 import styled from 'styled-components'
+import Register from './Register'
 
 
 const Login = (props) => {
@@ -45,13 +46,31 @@ const Login = (props) => {
         setstate({ ...state, [name]: value })
     }
     const valuesOfProps = props.trigger
-    const [closers, setClosers] = useState(true)
-
+    const abc = props.forOff
+    const delay = 0;
     useEffect(() => {
-        document.title = "Login Your Account"
+        document.title = "Login Your Account";
+        // let timer1 = setTimeout(() => setClosers(false), delay * 1000);
+        // return () => {
+        //     clearTimeout(timer1);
+        // };
     }, []);
+    const forOff = (abc === undefined) ? true : abc
+    const [closers, setClosers] = useState(true)
+    console.log(forOff, 'forOff')
+    console.log(closers, 'closers')
+    // console.log(abc, "abc")
+    const [buttonPopup, setButtonPopup] = useState(false);
 
-    return ((valuesOfProps && closers) ) ? (
+    const clos = () => {
+        console.log('clicked')
+        let timer1 = setTimeout(() => setClosers(false), delay * 1000);
+        return () => {
+            clearTimeout(timer1);
+        };
+    }
+
+    return ((valuesOfProps && closers && forOff)) ? (
         <>
             <div className="login__component">
                 <Link to={props.fromTo}>
@@ -99,13 +118,10 @@ const Login = (props) => {
                                         required
                                     />
                                     <button className='btn btn-secondary btn-block' type='submit'>
-                                        {/* <i className="fas fa-sign-in-alt"></i> Sign In */}
                                         Login
                                     </button>
-                                    <Link to='/register'>
-                                        {/* <button className='btn btn-primary btn-block' type='button' id="btn-"> */}
-                                        <i className="fas fa-user-plus"></i>  Create your Account
-                                        {/* </button> */}
+                                    <Link to='/shoes/men/Productdetails'>
+                                        <i className="fas fa-user-plus"></i>  <span onClick={() => { setButtonPopup(true); clos() }} >Create your Account</span>
                                     </Link>
                                     <hr />
                                     <div className="social-login">
@@ -134,9 +150,11 @@ const Login = (props) => {
                 </div>
             </div>
             {/* </BurgerNav> */}
-
+            <Register trigger={buttonPopup} fromTo='/shoes/men/Productdetails'></Register>
         </>
-    ) : "";
+    ) : <>
+        <Register trigger={buttonPopup} fromTo='/shoes/men/Productdetails'></Register>
+    </>;
     // )
 
 

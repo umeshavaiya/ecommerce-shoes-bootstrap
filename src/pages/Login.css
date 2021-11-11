@@ -118,36 +118,6 @@
 }
 
 
-/* Mobile */
-
-@media screen and (max-width: 500px) {
-    #logreg-forms {
-        width: 300px;
-    }
-    #logreg-forms .social-login {
-        width: 200px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-    }
-    #logreg-forms .social-btn {
-        font-size: 1.3rem;
-        font-weight: 100;
-        color: white;
-        width: 200px;
-        height: 56px;
-    }
-    #logreg-forms .social-btn:nth-child(1) {
-        margin-bottom: 5px;
-    }
-    #logreg-forms .social-btn span {
-        display: none;
-    }
-    #logreg-forms .google-btn:after {
-        content: "Google+";
-    }
-}
-
-
 /* login Css Amazon */
 
 .login {
@@ -183,7 +153,7 @@
     flex-direction: column;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-    padding: 50px;
+    padding: 50px 0;
 }
 
 .login__compo__text {
@@ -241,4 +211,52 @@
 
 .close__menu {
     text-align: end;
+}
+
+@media (max-width:1252px) {
+    .login__compo__2 {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width:1010px) {
+    #logreg-forms form {
+        width: 80%;
+    }
+}
+
+@media (max-width:878px) {
+    .login__component__0 {
+        height: 80%;
+    }
+    .login__compo {
+        width: 80%;
+    }
+}
+
+@media (max-width:650px) {
+    .login__compo {
+        width: 95%;
+        flex-direction: column;
+    }
+    .login__compo__1,
+    .login__compo__2 {
+        width: 100%;
+    }
+    .login__compo__1 {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0px;
+    }
+    .login__compo__2 {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 30px;
+    }
+}
+
+@media (max-width:425px) {
+    .login__compo__1,
+    .login__compo__2 {
+        padding: 15px 0;
+    }
 }

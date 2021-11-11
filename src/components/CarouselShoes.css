@@ -3,14 +3,14 @@
     margin: auto;
 }
 
-.InfiniteCarouselArrowIcon {
+.main .InfiniteCarouselArrowIcon {
     border: solid #c1c1c1;
     padding: 17px;
     border-width: 0 9px 9px 0;
     border-radius: 5px;
 }
 
-.InfiniteCarouselSlide img {
+.main .InfiniteCarouselSlide img {
     width: 85%;
 }
 
@@ -28,16 +28,16 @@
         margin: auto;
         overflow: hidden;
     }
-    .shoesText>p {
+    .main .shoesText>p {
         font-size: 12px !important;
     }
-    .InfiniteCarouselSlide {
+    .main .InfiniteCarouselSlide {
         width: 110px !important;
     }
 }
 
 @media (max-width:375px) {
-    .InfiniteCarouselSlide {
+    .main .InfiniteCarouselSlide {
         width: 100px !important;
     }
     .main {
@@ -64,20 +64,14 @@
         margin-left: 10px;
         font-size: 20px;
     }
-    .InfiniteCarouselArrowIcon {
+    .main .InfiniteCarouselArrowIcon {
         padding: 14px;
     }
     .shoesText>p {
         font-size: 15px;
     }
-    .InfiniteCarouselFrame {
+    .main .InfiniteCarouselFrame {
         overflow: hidden;
         margin: auto;
     }
-    /* .InfiniteCarouselArrowNext {
-        right: 0;
-    }
-    .InfiniteCarouselArrowPrev {
-        left: 0;
-    } */
 }

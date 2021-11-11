@@ -5,16 +5,17 @@ import yellowShoes from '../images/mensblue.png'
 import Login from '../pages/Login';
 import { Card, Typography } from 'antd';
 import Footer from './Footer';
-// import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-
+import styled from 'styled-components'
+import { CloseOutlined } from '@ant-design/icons';
 
 function ProductDetails() {
 
     const [buttonPopup, setButtonPopup] = useState(false);
     const { Meta } = Card;
     const { Title } = Typography;
+    const [burgerStatus, setBurgerStatus] = useState(false);
 
     return (
         <>
@@ -68,8 +69,35 @@ function ProductDetails() {
                     </div>
                 </nav>
             </div>
-            {/* <OwlCarousel className="owl-theme" loop margin={10} nav>
-            </OwlCarousel> */}
+            <div className="pro__img">
+                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img className="d-block w-100" src={yellowShoes} alt="First slide" />
+                        </div>
+                        <div className="carousel-item">
+                            <img className="d-block w-100" src={yellowShoes} alt="Second slide" />
+                        </div>
+                        <div className="carousel-item">
+                            <img className="d-block w-100" src={yellowShoes} alt="Third slide" />
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span style={{ fontSize: '50px', color: '#757575', overflow: ' hidden', zIndex: '15' }}> <i className="fa fa-angle-left" aria-hidden="true"></i></span>
+                        <span className="sr-only">Previous</span>
+                    </a>
+                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span style={{ fontSize: '50px', color: '#757575', overflow: ' hidden', zIndex: '15' }}> <i className="fa fa-angle-right" aria-hidden="true"></i></span>
+                        <span className="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
             <div className="main__productdetails">
                 <div className="productdetails__img">
                     <div className="productlink">
@@ -228,7 +256,7 @@ function ProductDetails() {
                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                         </Card>
                     </div>
-                    <div className="similer__img">
+                    <div className="similer__img similer__img__1">
                         <Card
                             className="card__Antds product__card"
                             hoverable
@@ -257,9 +285,80 @@ function ProductDetails() {
             <div className="menShoes__footer">
                 <Footer />
             </div>
+            <div onClick={() => setBurgerStatus(true)} className="menu menu__color">
+                <i class="fas fa-bars"></i>
+            </div>
+            <BurgerNav show={burgerStatus}>
+                <CloseWrapper className="user__name">
+                    <p>Hello,User</p>
+                    <CustomClose onClick={() => setBurgerStatus(false)} />
+                </CloseWrapper>
+                <div className="slider__text">
+                    <Link to="/">
+                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" class="btn btn-secondary">Login</button>
+                    </Link>
+                    <ul>
+                        <li><li>
+                            <Link to="/">
+                                <a className="menu_hover">Home </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/shoes/men">
+                                <a className="menu_hover">Men </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/shoes/women">
+                                <a className="menu_hover">Women </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/shoes/kids">
+                                <a className="menu_hover">Kides </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                        <li><li>
+                            <Link to="/">
+                                <a className="menu_hover">Sale </a>
+                            </Link>
+                        </li><li><i className="far fa-angle-right"></i></li></li>
+                    </ul>
+                </div>
+            </BurgerNav>
             <Login trigger={buttonPopup} fromTo='/shoes/men/Productdetails'></Login>
         </>
     )
 }
 
 export default ProductDetails
+
+
+const BurgerNav = styled.div`
+            position:fixed;
+            top:0;
+            bottom:0;
+            left:0;
+            background: #d664f0 !important;
+            color:#fff;
+            width: 70%;
+            z-index: 16;
+            list-style: none;
+            padding: 30px 30px 0 50px;
+            display:flex;
+            flex-direction:column;
+            text-align: start;
+            font-size:20px;
+            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
+            transition: transform 0.4s !important;
+            `
+
+const CustomClose = styled(CloseOutlined)`
+            cursor:pointer;
+            `
+
+const CloseWrapper = styled.div`
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom:20px;
+            `

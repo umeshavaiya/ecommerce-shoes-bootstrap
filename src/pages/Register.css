@@ -110,3 +110,23 @@
         content: "Google+";
     }
 }
+
+.logreg-for form {
+    width: 100% !important;
+    margin: auto;
+}
+
+.logreg_for_1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logreg_for_2 {
+    width: 45%;
+    margin: auto;
+}
+
+.logreg-for form button {
+    width: 60%;
+}
