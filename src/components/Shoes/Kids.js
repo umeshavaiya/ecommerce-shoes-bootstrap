@@ -760,7 +760,7 @@ function Kids() {
                     </ul>
                 </div>
             </BurgerNav>
-            <Login trigger={buttonPopup} fromTo='/shoes/men'></Login>
+            <Login trigger={buttonPopup} fromTo='/shoes/kids'></Login>
         </ >
     )
 }

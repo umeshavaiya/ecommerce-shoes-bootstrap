@@ -760,7 +760,7 @@ function WomenShoes() {
                     </ul>
                 </div>
             </BurgerNav>
-            <Login trigger={buttonPopup} fromTo='/shoes/men'></Login>
+            <Login trigger={buttonPopup} fromTo='/shoes/women'></Login>
         </ >
     )
 }

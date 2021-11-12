@@ -97,7 +97,6 @@ function ProductDetails() {
                     </a>
                 </div>
             </div>
-
             <div className="main__productdetails">
                 <div className="productdetails__img">
                     <div className="productlink">

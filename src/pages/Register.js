@@ -40,10 +40,10 @@ const Register = (props) => {
     }
 
     const valuesOfProps = props.trigger
-    const [buttonPopup, setButtonPopup] = useState(false);
+    const [buttonPopup, setButtonPopup] = useState(true);
 
     const [closers, setClosers] = useState(true)
-    return ((valuesOfProps && closers)) ? (
+    return ((valuesOfProps && closers && buttonPopup)) ? (
 
         <>
             <div className="login__component login__component__reg">
@@ -129,8 +129,11 @@ const Register = (props) => {
                                         Sign up
                                     </button>
                                     <hr />
-                                    <Link to='/shoes/men/Productdetails'>
-                                        <i className="fas fa-user-plus"></i>  <span onClick={() => { setButtonPopup(true) }} >Login with Your Account</span>
+                                    {
+                                        console.log(props.fromTo, "props.fromTo")
+                                    }
+                                    <Link to={props.fromTo}>
+                                        <i className="fas fa-user-plus"></i>  <span onClick={() => { setButtonPopup(false) }} >Login with Your Account</span>
                                     </Link>
                                 </form>
                             </div>

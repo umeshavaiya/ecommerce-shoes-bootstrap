@@ -8,6 +8,8 @@ import MenShoes from './components/Shoes/MenShoes';
 import WomenShoes from './components/Shoes/WomenShoes';
 import Kids from './components/Shoes/Kids';
 import ProductDetails from './components/ProductDetails';
+import Me from './components/Shoes/Me';
+import MenShoes1 from './components/Shoes/MenShoes1';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             <Route exact path="/shoes/women" component={WomenShoes} />
             <Route exact path="/shoes/kids" component={Kids} />
             <Route exact path="/shoes/men/Productdetails" component={ProductDetails} />
+            <Route exact path="/me" component={Me} />
+            <Route exact path="/me1" component={MenShoes1} />
           </Switch>
         </div>
       </Router >

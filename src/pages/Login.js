@@ -57,13 +57,9 @@ const Login = (props) => {
     }, []);
     const forOff = (abc === undefined) ? true : abc
     const [closers, setClosers] = useState(true)
-    console.log(forOff, 'forOff')
-    console.log(closers, 'closers')
-    // console.log(abc, "abc")
     const [buttonPopup, setButtonPopup] = useState(false);
 
     const clos = () => {
-        console.log('clicked')
         let timer1 = setTimeout(() => setClosers(false), delay * 1000);
         return () => {
             clearTimeout(timer1);
@@ -120,7 +116,7 @@ const Login = (props) => {
                                     <button className='btn btn-secondary btn-block' type='submit'>
                                         Login
                                     </button>
-                                    <Link to='/shoes/men/Productdetails'>
+                                    <Link to={props.fromTo}>
                                         <i className="fas fa-user-plus"></i>  <span onClick={() => { setButtonPopup(true); clos() }} >Create your Account</span>
                                     </Link>
                                     <hr />
@@ -150,10 +146,10 @@ const Login = (props) => {
                 </div>
             </div>
             {/* </BurgerNav> */}
-            <Register trigger={buttonPopup} fromTo='/shoes/men/Productdetails'></Register>
+            <Register trigger={buttonPopup} fromTo={props.fromTo}></Register>
         </>
     ) : <>
-        <Register trigger={buttonPopup} fromTo='/shoes/men/Productdetails'></Register>
+        <Register trigger={buttonPopup} fromTo={props.fromTo}></Register>
     </>;
     // )
 

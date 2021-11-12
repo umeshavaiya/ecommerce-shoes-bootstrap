@@ -320,7 +320,7 @@ function MenShoes() {
                         <div>
                             <div className="yellow__shoes">
                                 <div className="yellow__shoes__0">
-                                    <Link to="/shoes/men/Productdetails">
+                                    {/* <Link to="/shoes/men/Productdetails"> */}
                                         <Card
                                             className="card__Antds"
                                             hoverable
@@ -332,7 +332,7 @@ function MenShoes() {
                                             <Meta style={{ marginBottom: "8px", fontSize: '25px' }} title={<Title level={3} style={{ fontWeight: '700' }}>$200</Title>} />
                                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                                         </Card>
-                                    </Link>
+                                    {/* </Link> */}
                                     <Card
                                         className="card__Antds"
                                         hoverable
@@ -768,7 +768,7 @@ function MenShoes() {
                     </ul>
                 </div>
             </BurgerNav>
-            <Login trigger={buttonPopup} fromTo='/shoes/men'></Login>
+            <Login trigger={buttonPopup} fromTo='/shoes/men'></Login>   
         </ >
     )
 }
