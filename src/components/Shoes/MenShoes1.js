@@ -1,4 +1,3 @@
-
 import Hed from './hed'
 import React, { useState, useEffect } from 'react'
 import "./MenShoes.css"
@@ -10,7 +9,6 @@ import Footer from '../Footer';
 import { CloseOutlined } from '@ant-design/icons';
 import styled from 'styled-components'
 import Me from './Me';
-import ProductDetails from '../ProductDetails';
 
 
 function MenShoes1() {

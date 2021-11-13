@@ -4,7 +4,6 @@ import { useStateValue } from '../StateProvider'
 
 function Productcard({ id, title, image, price, rating }) {
     const [{ basket }, dispatch] = useStateValue();
-    console.log(title, "title");
 
     const removeItem = () => {
         dispatch({

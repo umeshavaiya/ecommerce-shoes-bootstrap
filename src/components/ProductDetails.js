@@ -9,14 +9,20 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import styled from 'styled-components'
 import { CloseOutlined } from '@ant-design/icons';
+import { useStateValue } from '../StateProvider'
+
 
 function ProductDetails() {
-
+    // { titless, price }
     const [buttonPopup, setButtonPopup] = useState(false);
     const { Meta } = Card;
     const { Title } = Typography;
     const [burgerStatus, setBurgerStatus] = useState(false);
 
+    const [{ basket }] = useStateValue();
+    const price = basket.map((item, i, arr) => (arr.length - 1 === i) ? item.price : "")
+    const title = basket.map((item, i, arr) => (arr.length - 1 === i) ? item.title : "")
+    console.log(basket,'basket')
     return (
         <>
             <div className="main__nav">
@@ -126,8 +132,8 @@ function ProductDetails() {
                 </div>
                 <div className="productdetails__text">
                     <div className="productlink2">
-                        <h2>Shoes Name</h2>
-                        <h2>Rs: 2100 <span style={{ textDecoration: "line-through", color: '#5d5d5d', fontSize: '25px' }}>Rs.3000</span><span style={{ fontSize: '29px', color: "#a42324" }}> (30% off)</span></h2>
+                        <h2>{title}</h2>
+                        <h2>Rs: {price} <span style={{ textDecoration: "line-through", color: '#5d5d5d', fontSize: '25px' }}>Rs.3000</span><span style={{ fontSize: '29px', color: "#a42324" }}> (30% off)</span></h2>
                         <p>(inclusive of all taxes)</p>
                     </div>
                     <hr />
