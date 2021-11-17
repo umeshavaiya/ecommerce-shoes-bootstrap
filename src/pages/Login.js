@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { googleSignInInitiate, loginInitiate } from '../redux/action'
 import './Login.css'
-import { CloseOutlined } from '@ant-design/icons';
-import styled from 'styled-components'
 import Register from './Register'
 
 
-const Login = (props) => {
+const Login = (props, { match }) => {
 
 
     const [state, setstate] = useState({
@@ -69,8 +67,8 @@ const Login = (props) => {
     return ((valuesOfProps && closers && forOff)) ? (
         <>
             <div className="login__component">
-                <Link to={props.fromTo}>
-                    <div className="close__menu"><i onClick={() => { setClosers(false) }} class="fas fa-times-circle"></i></div>
+                <Link to={history.location.pathname}>
+                    <div className="close__menu"><i onClick={() => { setClosers(false) }} className="fas fa-times-circle"></i></div>
                 </Link>
                 <div className="login__component__0">
                     <div className="login__compo">
@@ -159,6 +157,3 @@ const Login = (props) => {
 export default Login
 
 
-const CustomClose = styled(CloseOutlined)`
-            cursor:pointer;
-            `

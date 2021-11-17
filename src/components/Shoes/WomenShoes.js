@@ -720,7 +720,7 @@ function WomenShoes() {
                 <Footer />
             </div>
             <div onClick={() => setBurgerStatus(true)} className="menu menu__color">
-                <i class="fas fa-bars"></i>
+                <i className="fas fa-bars"></i>
             </div>
             <BurgerNav show={burgerStatus}>
                 <CloseWrapper className="user__name">
@@ -729,7 +729,7 @@ function WomenShoes() {
                 </CloseWrapper>
                 <div className="slider__text">
                     <Link to="/">
-                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" class="btn btn-secondary">Login</button>
+                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" className="btn btn-secondary">Login</button>
                     </Link>
                     <ul>
                         <li><li>

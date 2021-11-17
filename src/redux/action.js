@@ -1,6 +1,6 @@
 import * as types from './actionType';
 import { auth, googleAuthProvider } from '../firebase'
-
+import axios from 'axios';
 
 // For user register
 const registerStart = () => ({
@@ -91,6 +91,41 @@ export const googleSignInInitiate = () => {
     }
 }
 
-export const reducer = (state, action) => {
-    
+export const listProducts = () => async (dispatch) => {
+    try {
+        dispatch({ type: types.PRODUCT_LIST_REQUEST })
+        const { data } = await axios.get('/api/products')
+        dispatch({
+            type: types.PRODUCT_LIST_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: types.PRODUCT_LIST_FAILS,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
+
+export const listProductsDetails = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: types.PRODUCT_DETAILS_REQUEST })
+        const { data } = await axios.get(`/api/products/${id}`)
+        dispatch({
+            type: types.PRODUCT_DETAILS_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: types.PRODUCT_DETAILS_FAILS,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        })
+    }
 }
+

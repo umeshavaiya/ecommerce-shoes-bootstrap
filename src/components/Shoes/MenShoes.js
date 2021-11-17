@@ -1873,7 +1873,7 @@ function MenShoes() {
         <Footer />
       </div>
       <div onClick={() => setBurgerStatus(true)} className="menu menu__color">
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-bars"></i>
       </div>
       <BurgerNav show={burgerStatus}>
         <CloseWrapper className="user__name">
@@ -1886,7 +1886,7 @@ function MenShoes() {
               onClick={() => setButtonPopup(true)}
               className="login__btn"
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary"
             >
               Login
             </button>

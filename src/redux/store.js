@@ -1,7 +1,8 @@
-import { applyMiddleware, createStore, compose } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const initialState = {};
 
@@ -11,4 +12,4 @@ if (process.env.NODE_ENV === 'development') {
     middleware.push(logger);
 }
 
-export const store = createStore(rootReducer, initialState, compose(applyMiddleware(...middleware)));
+export const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));

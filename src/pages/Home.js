@@ -13,20 +13,20 @@ const Home = () => {
     image: "https://m.media-amazon.com/images/I/61a9RYXjqzL._AC_SL1000_.jpg",
     units: 2
   }]
-  const handleAddFunc = (product) => {
-    const existingProduct = cart.filter(p => p.id === product.id)
+  const handleAddFunc = (products) => {
+    const existingProduct = cart.filter(p => p.id === products.id)
     if (existingProduct.length > 0) {
-      const withoutExistingProduct = cart.filter(p => p.id !== product.id);
+      const withoutExistingProduct = cart.filter(p => p.id !== products.id);
       const updatedUnitsProduct = {
         ...existingProduct,
-        units: existingProduct[0].units + product.units
+        units: existingProduct[0].units + products.units
       };
       setCarts({
         cart: [...withoutExistingProduct, updatedUnitsProduct]
       })
     } else {
       setCarts({
-        cart: [product]
+        cart: [products]
       });
     }
   }

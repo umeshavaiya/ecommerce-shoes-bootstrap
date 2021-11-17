@@ -4,11 +4,13 @@ import "./MenShoes.css"
 import { Link } from 'react-router-dom'
 import Login from '../../pages/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import yellowShoes from '../../images/mensblue.png'
 import Footer from '../Footer';
 import { CloseOutlined } from '@ant-design/icons';
 import styled from 'styled-components'
 import Me from './Me';
+import { Row, Col, Spinner, Alert } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { listProducts } from "../../redux/action"
 
 
 function MenShoes1() {
@@ -18,10 +20,17 @@ function MenShoes1() {
     useEffect(() => {
         document.title = "Men's Shoes"
     }, []);
+
+    const dispatch = useDispatch();
+    const productList = useSelector(state => state.productList);
+    const { loading, error, products } = productList
+    useEffect(() => {
+        dispatch(listProducts())
+    }, [dispatch]);
+
     return (
         <div>
             <Hed />
-
             <div className="shoes__pageMI">
                 <div className="shoes__slider">
                     <div className="shoes__slider__0">
@@ -265,179 +274,23 @@ function MenShoes1() {
                             </select>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <div className="yellow__shoes">
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Running shoes 1"
-                                        price={209}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Running shoes 2"
-                                        price={145}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Running shoes 3"
-                                        price={174}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Running shoes"
-                                        price={87}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
+                    <div >
+                        {loading
+                            ? <div className="products_component">
+                                <Spinner animation="border" />
                             </div>
-                            <div className="yellow__shoes">
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={75}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={129}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={125}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={289}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                            </div>
-                            <div className="yellow__shoes">
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={200}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={115}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={104}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={174}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                            </div>
-                            <div className="yellow__shoes">
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={75}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={129}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={125}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={289}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                            </div>
-                            <div className="yellow__shoes">
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={200}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={115}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                                <div className="yellow__shoes__0">
-                                    <Me
-                                        id="1"
-                                        title="Me Running shoes"
-                                        price={104}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                    <Me
-                                        id="2"
-                                        title="Me Running"
-                                        price={174}
-                                        image={yellowShoes}
-                                        PR="/shoes/men/Productdetails"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                            : error
+                                ? <Alert variant='danger'>
+                                    {error}
+                                </Alert>
+                                : <Row>
+                                    {products.map((product) => (
+                                        <Col key={product._id} md={3}>
+                                            <Me product={product} />
+                                        </Col>
+                                    ))}
+                                </Row>
+                        }
                     </div>
                 </div>
             </div>
@@ -445,7 +298,7 @@ function MenShoes1() {
                 <Footer />
             </div>
             <div onClick={() => setBurgerStatus(true)} className="menu menu__color">
-                <i class="fas fa-bars"></i>
+                <i className="fas fa-bars"></i>
             </div>
             <BurgerNav show={burgerStatus}>
                 <CloseWrapper className="user__name">
@@ -454,7 +307,7 @@ function MenShoes1() {
                 </CloseWrapper>
                 <div className="slider__text">
                     <Link to="/">
-                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" class="btn btn-secondary">Login</button>
+                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" className="btn btn-secondary">Login</button>
                     </Link>
                     <ul>
                         <li><li>

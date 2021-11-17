@@ -23,7 +23,7 @@ function NavbarHad() {
         <>
             <div className="containers">
                 <img src={homeShoesimg} alt="Notebook" />
-                <div class="contents">
+                <div className="contents">
                     <div className="fixed__nav">
                         <Fade top>
                             <nav className="nav nav__size">
@@ -33,16 +33,16 @@ function NavbarHad() {
                                 <div className='nav__comp'>
                                     <ul className='nav__comp__ul' >
                                         <li><Link to="/">Home</Link></li>
-                                        <li><Link to="/shoes/men">Men</Link></li>
+                                        <li><Link to="/products">Men</Link></li>
                                         <li><Link to="/shoes/women">Women</Link></li>
                                         <li><Link to="/shoes/kids">Kids</Link></li>
                                         <li><Link to="">Sale</Link></li>
                                     </ul>
                                     <Link to='/'>
-                                        <i onClick={() => setButtonPopup(true)} class="fas fa-user"></i>
+                                        <i onClick={() => setButtonPopup(true)} className="fas fa-user"></i>
                                     </Link>
                                     <Link to="/checkout">
-                                        <i class="fas fa-shopping-cart"></i>
+                                        <i className="fas fa-shopping-cart"></i>
                                     </Link>
 
                                 </div>
@@ -59,7 +59,7 @@ function NavbarHad() {
                 </div>
             </div>
             <div onClick={() => setBurgerStatus(true)} className="menu">
-                <i class="fas fa-bars"></i>
+                <i className="fas fa-bars"></i>
             </div>
             <BurgerNav show={burgerStatus}>
                 <CloseWrapper className="user__name">
@@ -68,7 +68,7 @@ function NavbarHad() {
                 </CloseWrapper>
                 <div className="slider__text">
                     <Link to="/">
-                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" class="btn btn-secondary">Login</button>
+                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" className="btn btn-secondary">Login</button>
                     </Link>
                     <ul>
                         <li><li>

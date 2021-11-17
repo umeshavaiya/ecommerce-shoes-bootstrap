@@ -5,7 +5,7 @@ import Subtotal from '../Subtotal'
 import Productcard from './Productcard'
 import { Link } from 'react-router-dom'
 
-function Checkout() {
+function Checkout({match}) {
 
   const [{ basket }] = useStateValue();
   return (
@@ -31,7 +31,7 @@ function Checkout() {
             <div>
               <h2 className="checkout__title">Your shopping basket is empty.</h2>
               <p>You have no items in your basket. Add one</p>
-              <Link to="/">
+              <Link to={`/products/${match.params.id}`}>
                 <button>Home</button>
               </Link>
             </div>

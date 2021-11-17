@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductDetails.css'
 import yellowShoes from '../images/mensblue.png'
@@ -10,70 +10,39 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import styled from 'styled-components'
 import { CloseOutlined } from '@ant-design/icons';
 import { useStateValue } from '../StateProvider'
+import { useDispatch, useSelector } from 'react-redux'
+import { listProductsDetails } from '../redux/action';
+import { Spinner, Alert, Col, ListGroupItem, Row, Form } from 'react-bootstrap'
+import Hed from './Shoes/hed';
 
 
-function ProductDetails() {
-    // { titless, price }
+function ProductDetails({ history, match }) {
+    const [qty, setQty] = useState(1)
     const [buttonPopup, setButtonPopup] = useState(false);
     const { Meta } = Card;
     const { Title } = Typography;
     const [burgerStatus, setBurgerStatus] = useState(false);
 
-    const [{ basket }] = useStateValue();
-    const price = basket.map((item, i, arr) => (arr.length - 1 === i) ? item.price : "")
-    const title = basket.map((item, i, arr) => (arr.length - 1 === i) ? item.title : "")
-    console.log(basket,'basket')
+
+
+    // redux
+    const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const { loading, error, product } = productDetails
+    useEffect(() => {
+        dispatch(listProductsDetails(match.params.id))
+    }, [dispatch]);
+
+    const [{ basket }] = useStateValue()
+
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`);
+    }
+    console.log(match.params.id)
     return (
         <>
             <div className="main__nav">
-                <nav className="navbar navbar-expand-lg navbar-light ">
-                    <div className="container-fluid">
-                        <Link to="/">
-                            <a href="/#" className="navbar-brand">Shoes</a>
-                        </Link>
-                        {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button> */}
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li className="nav-item">
-                                    <Link to="/">
-                                        <a href="/#" className="nav-link active" aria-current="page">Home</a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/shoes/men">
-                                        <a href="/#" className="nav-link active" aria-current="page" >Men</a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/shoes/women">
-                                        <a href="/#" className="nav-link active" aria-current="page" >Women</a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/shoes/kids">
-                                        <a href="/#" className="nav-link active" aria-current="page" >Kids</a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="/#" className="nav-link active" aria-current="page" >Sale</a>
-                                </li>
-                            </ul>
-                            <form className="d-flex">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            </form>
-                            <div className="icon__color">
-                                <Link to='/shoes/men/Productdetails'>
-                                    <i onClick={() => setButtonPopup(true)} className="fas fa-user"></i>
-                                </Link>
-                                <Link to="/checkout">
-                                    <i className="fas fa-shopping-cart"></i>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
+                <Hed />
             </div>
             <div className="pro__img">
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -103,135 +72,182 @@ function ProductDetails() {
                     </a>
                 </div>
             </div>
-            <div className="main__productdetails">
-                <div className="productdetails__img">
-                    <div className="productlink">
-                        <h2>Shoes / Men / Shoes Name</h2>
-                    </div>
-                    <div className="prodetails__img__main">
-                        <div className="prodetails__img">
-                            <img src={yellowShoes} />
-                        </div>
-                        <div className="prodetails__img">
-                            <img src={yellowShoes} />
-                        </div>
-                    </div>
-                    <div className="prodetails__img__main prodetails__img__main2">
-                        <div className="prodetails__img">
-                            <img src={yellowShoes} />
-                        </div>
-                        <div className="prodetails__img">
-                            <img src={yellowShoes} />
-                        </div>
-                    </div>
-                    <div className="prodetails__img__main prodetails__img__main2" >
-                        <div className="prodetails__img" >
-                            <img src={yellowShoes} />
-                        </div>
-                    </div>
+            {loading
+                ? <div className="products_component">
+                    <Spinner animation="border" />
                 </div>
-                <div className="productdetails__text">
-                    <div className="productlink2">
-                        <h2>{title}</h2>
-                        <h2>Rs: {price} <span style={{ textDecoration: "line-through", color: '#5d5d5d', fontSize: '25px' }}>Rs.3000</span><span style={{ fontSize: '29px', color: "#a42324" }}> (30% off)</span></h2>
-                        <p>(inclusive of all taxes)</p>
-                    </div>
-                    <hr />
-                    <div className="prodetails__size">
-                        <h2>Select Size (UK) {' '}<span style={{ color: '#a42324', fontSize: '23px' }}>&nbsp;&nbsp;Size Chart</span></h2>
-                        <div className="prodetails__btn">
-                            <div className="size__button prodetails__size__btn">
-                                <p type="button">3</p>
-                                <p type="button">3.5</p>
-                                <p type="button">4</p>
-                                <p type="button">4.5</p>
-                                <p type="button">5</p>
-                                <p type="button">5.5</p>
-                                <p type="button">6</p>
+                : error
+                    ? <Alert variant='danger'>
+                        {error}
+                    </Alert>
+                    :
+                    <div className="main__productdetails">
+                        <div className="productdetails__img">
+                            <div className="productlink">
+                                <h2>Shoes / Men / Shoes Name</h2>
                             </div>
-                            <div className="size__button prodetails__size__btn">
-                                <p type="button">6.5</p>
-                                <p type="button">7</p>
-                                <p type="button">7.5</p>
-                                <p type="button">8</p>
-                                <p type="button">8.5</p>
-                                <p type="button">9</p>
-                                <p type="button">9.5</p>
+                            <div className="prodetails__img__main">
+                                <div className="prodetails__img">
+                                    <img src={yellowShoes} />
+                                </div>
+                                <div className="prodetails__img">
+                                    <img src={yellowShoes} />
+                                </div>
                             </div>
-                            <div className="size__button prodetails__size__btn">
-                                <p type="button">10</p>
-                                <p type="button">10.5</p>
-                                <p type="button">11</p>
-                                <p type="button">11.5</p>
-                                <p type="button">12</p>
-                                <p type="button">12.5</p>
-                                <p type="button">13</p>
+                            <div className="prodetails__img__main prodetails__img__main2">
+                                <div className="prodetails__img">
+                                    <img src={yellowShoes} />
+                                </div>
+                                <div className="prodetails__img">
+                                    <img src={yellowShoes} />
+                                </div>
                             </div>
-                            <div className="size__button prodetails__size__btn">
-                                <p type="button">13.5</p>
-                                <p type="button">14</p>
-                                <p type="button">14.5</p>
-                                <p type="button">15</p>
-                                <p type="button">16</p>
-                                <p type="button">17</p>
-                                <p type="button">17.5</p>
+                            <div className="prodetails__img__main prodetails__img__main2" >
+                                <div className="prodetails__img" >
+                                    <img src={yellowShoes} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="productdetails__text">
+                            <div className="productlink2">
+                                <h2>{product.name}</h2>
+                                <h2>Rs: {product.price} <span style={{ textDecoration: "line-through", color: '#5d5d5d', fontSize: '25px' }}>Rs.3000</span><span style={{ fontSize: '29px', color: "#a42324" }}> (30% off)</span></h2>
+                                <p>(inclusive of all taxes)</p>
+                            </div>
+                            <hr />
+                            <div className="prodetails__size">
+                                <h2>Select Size (UK) {' '}<span style={{ color: '#a42324', fontSize: '23px' }}>&nbsp;&nbsp;Size Chart</span></h2>
+                                <div className="prodetails__btn">
+                                    <div className="size__button prodetails__size__btn">
+                                        <p type="button">3</p>
+                                        <p type="button">3.5</p>
+                                        <p type="button">4</p>
+                                        <p type="button">4.5</p>
+                                        <p type="button">5</p>
+                                        <p type="button">5.5</p>
+                                        <p type="button">6</p>
+                                    </div>
+                                    <div className="size__button prodetails__size__btn">
+                                        <p type="button">6.5</p>
+                                        <p type="button">7</p>
+                                        <p type="button">7.5</p>
+                                        <p type="button">8</p>
+                                        <p type="button">8.5</p>
+                                        <p type="button">9</p>
+                                        <p type="button">9.5</p>
+                                    </div>
+                                    <div className="size__button prodetails__size__btn">
+                                        <p type="button">10</p>
+                                        <p type="button">10.5</p>
+                                        <p type="button">11</p>
+                                        <p type="button">11.5</p>
+                                        <p type="button">12</p>
+                                        <p type="button">12.5</p>
+                                        <p type="button">13</p>
+                                    </div>
+                                    <div className="size__button prodetails__size__btn">
+                                        <p type="button">13.5</p>
+                                        <p type="button">14</p>
+                                        <p type="button">14.5</p>
+                                        <p type="button">15</p>
+                                        <p type="button">16</p>
+                                        <p type="button">17</p>
+                                        <p type="button">17.5</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="prodetails__color">
+                                <h2>Available Color</h2>
+                                <div className="prodetails__color1">
+                                    <div className="prodetails__color__btn">
+                                        <button className="my-button"></button>
+                                        <p>Black</p>
+                                    </div>
+                                    <div className="prodetails__color__btn">
+                                        <button className="my-button" style={{ background: "#aa5514" }}></button>
+                                        <p>Brown</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <Col md={6}>
+                                    <ListGroupItem>
+                                        <Row>
+                                            <Col>Status :</Col>
+                                            <Col>
+                                                {product.countInStock > 0 ? `${product.countInStock} QTY In Stock` : "Out of Stock"}
+                                            </Col>
+                                        </Row>
+                                    </ListGroupItem>
+                                    {
+                                        product.countInStock > 0 && (
+                                            <ListGroupItem>
+                                                <Row>
+                                                    <Col>QTY:</Col>
+                                                    <Col>
+                                                        <Form.Control as="select" value={qty} onChange={e => setQty(e.target.value)}>
+                                                            {
+                                                                [...Array(product.countInStock).keys()]
+                                                                    .map((x) => (
+                                                                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                                                    ))
+                                                            }
+                                                        </Form.Control>
+                                                    </Col>
+                                                </Row>
+                                            </ListGroupItem>
+
+                                        )
+                                    }
+                                </Col>
+                            </div>
+                            <div className="prodetails__purches__button">
+                                {
+                                    product.countInStock < 1
+                                        ? (<button className="prodetails__purches__button1 add_cart_btn" disabled onClick={addToCartHandler}>Add to Cart</button>)
+
+                                        : <button className="prodetails__purches__button1" onClick={addToCartHandler}>Add to Cart</button>
+                                }
+                                <button className="prodetails__purches__button2">Buy Now</button>
+                            </div>
+                            <div className="delivery__option">
+                                <h2>Delivery option</h2>
+                                <div className="delivery__option__example">
+                                    <input type="number" maxLength="6" placeholder="Check Pincode" />
+                                    <button>Check</button>
+                                </div>
+                                <p>Please enter PIN code to check delivery time & Pay on Delivery Availability</p>
+                            </div>
+                            <div className="product__details">
+                                <h2>PRODUCT DETAILS</h2>
+                                <p>Special Technology:</p>
+                                <ul>
+                                    <li>SoftFoam+ sockliner: Cushioned footbed and sockliner provides optimal step-in comfort</li>
+                                </ul>
+                                <p>Design Details:</p>
+                                <ul>
+                                    <li>A pair of round-toe white sneakers, has mid-top styling, lace-up detail</li>
+                                    <li>Mid-top silhouette</li>
+                                    <li> Synthetic leather upper with perforated details on vamp</li>
+                                    <li>Full lace closure with mid-rise lacing option</li>
+                                    <li>Lace-through TPU cage at side for additonal support</li>
+                                    <li>IMEVA midsole for soft cushioning and comfort</li>
+                                    <li>Rubber outsole provides traction and grip</li>
+                                    <li>Webbing pull loops at heel and tongue</li>
+                                    <li>Cushioned footbed</li>
+                                    <li>Textured and patterned outsole</li>
+                                    <li>Warranty: 3 months</li>
+                                    <li>Warranty provided by brand/manufacturer</li>
+                                </ul>
+                            </div>
+                            <div className="material">
+                                <p>Material & Care</p>
+                                <span style={{ fontSize: '20px', color: '#656565' }}>Synthetic Leather</span><br />
+                                <span style={{ fontSize: '20px', color: '#656565' }}>Wipe with a clean, dry cloth to remove dust</span>
                             </div>
                         </div>
                     </div>
-                    <div className="prodetails__color">
-                        <h2>Available Color</h2>
-                        <div className="prodetails__color1">
-                            <div classNameq="prodetails__color__btn">
-                                <button className="my-button"></button>
-                                <p>Black</p>
-                            </div>
-                            <div classNameq="prodetails__color__btn">
-                                <button className="my-button" style={{ background: "#aa5514" }}></button>
-                                <p>Brown</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="prodetails__purches__button">
-                        <button className="prodetails__purches__button1">Add to Cart</button>
-                        <button className="prodetails__purches__button2">Buy Now</button>
-                    </div>
-                    <div className="delivery__option">
-                        <h2>Delivery option</h2>
-                        <div className="delivery__option__example">
-                            <input type="number" maxLength="6" placeholder="Check Pincode" />
-                            <button>Check</button>
-                        </div>
-                        <p>Please enter PIN code to check delivery time & Pay on Delivery Availability</p>
-                    </div>
-                    <div className="product__details">
-                        <h2>PRODUCT DETAILS</h2>
-                        <p>Special Technology:</p>
-                        <ul>
-                            <li>SoftFoam+ sockliner: Cushioned footbed and sockliner provides optimal step-in comfort</li>
-                        </ul>
-                        <p>Design Details:</p>
-                        <ul>
-                            <li>A pair of round-toe white sneakers, has mid-top styling, lace-up detail</li>
-                            <li>Mid-top silhouette</li>
-                            <li> Synthetic leather upper with perforated details on vamp</li>
-                            <li>Full lace closure with mid-rise lacing option</li>
-                            <li>Lace-through TPU cage at side for additonal support</li>
-                            <li>IMEVA midsole for soft cushioning and comfort</li>
-                            <li>Rubber outsole provides traction and grip</li>
-                            <li>Webbing pull loops at heel and tongue</li>
-                            <li>Cushioned footbed</li>
-                            <li>Textured and patterned outsole</li>
-                            <li>Warranty: 3 months</li>
-                            <li>Warranty provided by brand/manufacturer</li>
-                        </ul>
-                    </div>
-                    <div className="material">
-                        <p>Material & Care</p>
-                        <span style={{ fontSize: '20px', color: '#656565' }}>Synthetic Leather</span><br />
-                        <span style={{ fontSize: '20px', color: '#656565' }}>Wipe with a clean, dry cloth to remove dust</span>
-                    </div>
-                </div>
-            </div>
+            }
             <div className="similer__product">
                 <div className="similer__product1">
                     <h2>SIMILER PRODUCTS</h2>
@@ -291,7 +307,7 @@ function ProductDetails() {
                 <Footer />
             </div>
             <div onClick={() => setBurgerStatus(true)} className="menu menu__color">
-                <i class="fas fa-bars"></i>
+                <i className="fas fa-bars"></i>
             </div>
             <BurgerNav show={burgerStatus}>
                 <CloseWrapper className="user__name">
@@ -300,7 +316,7 @@ function ProductDetails() {
                 </CloseWrapper>
                 <div className="slider__text">
                     <Link to="/">
-                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" class="btn btn-secondary">Login</button>
+                        <button onClick={() => setButtonPopup(true)} className="login__btn" type="button" className="btn btn-secondary">Login</button>
                     </Link>
                     <ul>
                         <li><li>
@@ -340,30 +356,30 @@ export default ProductDetails
 
 
 const BurgerNav = styled.div`
-            position:fixed;
-            top:0;
-            bottom:0;
-            left:0;
-            background: #d664f0 !important;
-            color:#fff;
-            width: 70%;
-            z-index: 16;
-            list-style: none;
-            padding: 30px 30px 0 50px;
-            display:flex;
-            flex-direction:column;
-            text-align: start;
-            font-size:20px;
-            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
-            transition: transform 0.4s !important;
-            `
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #d664f0!important;
+    color:#fff;
+    width: 70 %;
+    z - index: 16;
+    list - style: none;
+    padding: 30px 30px 0 50px;
+    display: flex;
+    flex - direction: column;
+    text - align: start;
+    font - size: 20px;
+    transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
+    transition: transform 0.4s!important;
+    `
 
 const CustomClose = styled(CloseOutlined)`
-            cursor:pointer;
-            `
+    cursor: pointer;
+    `
 
 const CloseWrapper = styled.div`
-            display: flex;
-            justify-content: flex-end;
-            padding-bottom:20px;
-            `
+    display: flex;
+    justify - content: flex - end;
+    padding - bottom: 20px;
+    `

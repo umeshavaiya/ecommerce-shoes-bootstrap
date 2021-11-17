@@ -17,9 +17,7 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/checkout">
-              <Checkout />
-            </Route>
+
             <Route exact path="/">
               <Home />
             </Route>
@@ -28,13 +26,14 @@ function App() {
             <Route exact path="/shoes/men" component={MenShoes} />
             <Route exact path="/shoes/women" component={WomenShoes} />
             <Route exact path="/shoes/kids" component={Kids} />
-            <Route exact path="/shoes/men/Productdetails" component={ProductDetails} />
-            <Route exact path="/me" component={Me} />
-            <Route exact path="/me1" component={MenShoes1} />
+            <Route exact path="/products" component={MenShoes1} />
+            <Route exact path="/products/:id" component={ProductDetails} />
+            <Route exact path="/cart/:id?" component={Checkout} />
+            {/* <Route exact path="/product/:id" component={Me} /> */}
           </Switch>
         </div>
       </Router >
-    </div>
+    </div >
   );
 }
 
