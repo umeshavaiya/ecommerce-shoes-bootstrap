@@ -101,7 +101,7 @@ function MenShoes() {
                     className="fas fa-user"
                   ></i>
                 </Link>
-                <Link to="/checkout">
+                <Link to="/cart">
                   <i className="fas fa-shopping-cart"></i>
                 </Link>
               </div>
@@ -1968,7 +1968,7 @@ const BurgerNav = styled.div`
   text-align: start;
   font-size: 20px;
   transform: ${(props) =>
-    props.show ? "translateX(0%)" : "translateX(-100%)"};
+    props.show ? "translateX(0%)" : "translateX(-101%)"};
   transition: transform 0.4s !important;
 `;
 

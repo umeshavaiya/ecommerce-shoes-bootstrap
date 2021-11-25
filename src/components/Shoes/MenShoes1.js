@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from "../../redux/action"
 
 
-function MenShoes1() {
+function MenShoes1({location}) {
     const [burgerStatus, setBurgerStatus] = useState(false);
     const [buttonPopup, setButtonPopup] = useState(false);
 
@@ -27,6 +27,7 @@ function MenShoes1() {
     useEffect(() => {
         dispatch(listProducts())
     }, [dispatch]);
+
 
     return (
         <div>
@@ -338,7 +339,8 @@ function MenShoes1() {
                     </ul>
                 </div>
             </BurgerNav>
-            <Login trigger={buttonPopup} fromTo='/shoes/men'></Login>
+            <Login trigger={buttonPopup} location={location.search} fromTo='/shoes/men'></Login>
+            
         </div>
     )
 }
@@ -361,7 +363,7 @@ const BurgerNav = styled.div`
             flex-direction:column;
             text-align: start;
             font-size:20px;
-            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
+            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-101%)'};
             transition: transform 0.4s !important;
             `
 

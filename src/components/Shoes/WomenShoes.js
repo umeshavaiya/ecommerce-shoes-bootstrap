@@ -783,7 +783,7 @@ const BurgerNav = styled.div`
             flex-direction:column;
             text-align: start;
             font-size:20px;
-            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
+            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-101%)'};
             transition: transform 0.4s !important;
             `
 

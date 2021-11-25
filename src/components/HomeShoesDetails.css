@@ -93,6 +93,10 @@
         border: white;
     }
     
+    .price__btn {
+        align-items: center;
+    }
+    
     .button2:hover {
         background-color: #3a3a3a;
         transform: scale(1.1);

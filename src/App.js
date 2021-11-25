@@ -10,6 +10,8 @@ import Kids from './components/Shoes/Kids';
 import ProductDetails from './components/ProductDetails';
 import Me from './components/Shoes/Me';
 import MenShoes1 from './components/Shoes/MenShoes1';
+import CartScreen from './pages/CartScreen';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -28,8 +30,9 @@ function App() {
             <Route exact path="/shoes/kids" component={Kids} />
             <Route exact path="/products" component={MenShoes1} />
             <Route exact path="/products/:id" component={ProductDetails} />
-            <Route exact path="/cart/:id?" component={Checkout} />
-            {/* <Route exact path="/product/:id" component={Me} /> */}
+            {/* <Route exact path="/checkout" component={Checkout} /> */}
+            <Route exact path="/cart/:id?" component={CartScreen} />
+            <Route exact path="/profile" component={Profile} />
           </Switch>
         </div>
       </Router >

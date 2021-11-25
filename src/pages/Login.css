@@ -183,6 +183,10 @@
     padding: 50px;
 }
 
+.login__compo__2 .btn {
+    font-size: 20px;
+}
+
 .login__compo__2_1 h3 {
     font-weight: 700;
 }

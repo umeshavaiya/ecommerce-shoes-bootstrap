@@ -11,7 +11,7 @@ import Login from '../pages/Login'
 
 
 
-function NavbarHad() {
+const NavbarHad = ({ match }) => {
 
     const [burgerStatus, setBurgerStatus] = useState(false);
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -19,13 +19,14 @@ function NavbarHad() {
         document.title = "Welcome to Shoes"
     }, []);
 
+
     return (
         <>
             <div className="containers">
                 <img src={homeShoesimg} alt="Notebook" />
                 <div className="contents">
-                    <div className="fixed__nav">
-                        <Fade top>
+                    <Fade top>
+                        <div className="fixed__nav">
                             <nav className="nav nav__size">
                                 <Link to='/'>
                                     <h1>Shoes</h1>
@@ -41,14 +42,14 @@ function NavbarHad() {
                                     <Link to='/'>
                                         <i onClick={() => setButtonPopup(true)} className="fas fa-user"></i>
                                     </Link>
-                                    <Link to="/checkout">
+                                    <Link to="/cart">
                                         <i className="fas fa-shopping-cart"></i>
                                     </Link>
 
                                 </div>
                             </nav>
-                        </Fade>
-                    </div>
+                        </div>
+                    </Fade>
                     <div className="special__edition">
                         <Fade cascade>
                             <h2>SPECIAL EDITION</h2>
@@ -122,7 +123,7 @@ const BurgerNav = styled.div`
             flex-direction:column;
             text-align: start;
             font-size:20px;
-            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-100%)'};
+            transform: ${props => props.show ? 'translateX(0%)' : 'translateX(-101%)'};
             transition: transform 0.4s !important;
             `
 

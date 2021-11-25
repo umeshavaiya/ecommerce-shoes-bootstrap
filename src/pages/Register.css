@@ -130,3 +130,10 @@
 .logreg-for form button {
     width: 60%;
 }
+
+.dropdown-item,
+.active,
+.dropdown-item:active {
+    color: black !important;
+    background-color: white !important;
+}

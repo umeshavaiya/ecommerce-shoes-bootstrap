@@ -55,6 +55,11 @@
     display: flex;
 }
 
+.dropdown-toggle,
+.nav-link a {
+    padding-right: 0rem !important;
+}
+
 .shoes__pageMI {
     width: 100%;
     display: flex;
@@ -152,6 +157,10 @@
 
 .shoes__part {
     width: 80%;
+}
+
+.shoes__part .row {
+    margin-right: 0;
 }
 
 .shoes__part__1 {

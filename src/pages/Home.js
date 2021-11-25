@@ -30,7 +30,6 @@ const Home = () => {
       });
     }
   }
-  console.log(carts, 'carts');
   return (
     <div className="home">
       <img className="home__image"

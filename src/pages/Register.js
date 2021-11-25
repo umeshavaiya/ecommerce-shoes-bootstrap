@@ -4,8 +4,12 @@ import { useHistory, Link } from 'react-router-dom'
 import { registerInitiate } from '../redux/action'
 import Login from './Login'
 import './Register.css'
+import { register } from '../redux/action'
+import { Spinner } from 'react-bootstrap'
+
 
 const Register = (props) => {
+
     const [state, setstate] = useState({
         displayName: '',
         email: '',
@@ -17,44 +21,77 @@ const Register = (props) => {
 
     const history = useHistory();
 
-    useEffect(() => {
-        if (currentUser) {
-            history.push('/')
-        }
-    }, [currentUser, history])
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         history.push('/')
+    //     }
+    // }, [currentUser, history])
 
     const dispatch = useDispatch();
 
-    const { email, password, displayName, passwordConfirm } = state;
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (password !== passwordConfirm) {
-            return;
-        }
-        dispatch(registerInitiate(email, password, displayName))
-        setstate({ email: '', displayName: '', password: '', passwordConfirm: '' })
-    };
-    const handleChange = (e) => {
-        let { name, value } = e.target;
-        setstate({ ...state, [name]: value })
-    }
+    // const { email, password, displayName, passwordConfirm } = state;
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (password !== passwordConfirm) {
+    //         return;
+    //     }
+    //     dispatch(registerInitiate(email, password, displayName))
+    //     setstate({ email: '', displayName: '', password: '', passwordConfirm: '' })
+    // };
+    // const handleChange = (e) => {
+    //     let { name, value } = e.target;
+    //     setstate({ ...state, [name]: value })
+    // }
 
     const valuesOfProps = props.trigger
     const [buttonPopup, setButtonPopup] = useState(true);
 
     const [closers, setClosers] = useState(true)
-    return ((valuesOfProps && closers && buttonPopup)) ? (
 
+    // for server side data
+
+    const [email, setSEmail] = useState('')
+    const [name, setName] = useState('');
+    const [password, setSPassword] = useState('')
+    const [confirmPassword, setConfirmSPassword] = useState('')
+    const [message, setMessage] = useState('');
+
+
+    const redirect = props.location ? props.location.split("=")[1] : "/";
+
+    //This is server auth (dataBase) 
+    const userRegister = useSelector((state) => state.userRegister)
+    const { loading, error, userInfo } = userRegister
+
+    // useEffect(() => {
+    //     if (userInfo) {
+    //         history.push(redirect)
+    //     }
+    // }, [history, userInfo, redirect])
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        // dispatch
+        if (password !== confirmPassword) {
+            setMessage('Password do not match')
+        } else {
+            dispatch(register(name, email, password))
+        }
+    }
+
+    return ((valuesOfProps && closers && buttonPopup)) ? (
         <>
             <div className="login__component login__component__reg">
-                <Link to={props.fromTo}>
+                <Link to='/products'>
                     <div className="close__menu"><h3 onClick={() => { setClosers(false) }} >Back to Login</h3></div>
                 </Link>
+                {message && <h3>{message}</h3>}
                 <div className="login__component__0">
                     <div className="login__compo">
+
                         <div className="login__compo__1">
                             <div className="login__compo__text">
-                                <h2>Welcome</h2>
+                                <h2>Welcomes</h2>
                                 <p>To access account and manage orders</p>
                             </div>
                             <div className="login__compo__img">
@@ -66,12 +103,15 @@ const Register = (props) => {
                             <div className="login__compo__2_1">
                                 <h3>Register Your Account</h3>
                             </div>
+                            {error}
+                            {loading && <Spinner />}
                             <div className="logreg-for" id="logreg-forms">
-                                <form id='form-signin' onSubmit={handleSubmit}>
+                                {/* <form id='form-signin' onSubmit={handleSubmit}> */}
+                                <form id='form-signin' onSubmit={submitHandler}>
                                     <div className="logreg_for_1">
                                         <div className="logreg_for_2">
                                             <p>Full Name</p>
-                                            <input
+                                            {/* <input
                                                 type="text"
                                                 id="displayName"
                                                 className="form-control"
@@ -80,17 +120,32 @@ const Register = (props) => {
                                                 onChange={handleChange}
                                                 value={displayName}
                                                 required
+                                            /> */}
+                                            <input
+                                                controlId="email"
+                                                className="form-control"
+                                                type="text"
+                                                onChange={(e) => setName(e.target.value)}
+                                                value={name}
+                                                required
                                             />
                                         </div>
                                         <div className="logreg_for_2">
                                             <p>Email Address</p>
-                                            <input
+                                            {/* <input
                                                 type="email"
                                                 id="userEmail"
                                                 className="form-control"
-                                                // placeholder="Email Address"
                                                 name="email"
                                                 onChange={handleChange}
+                                                value={email}
+                                                required
+                                            /> */}
+                                            <input
+                                                controlId="name"
+                                                className="form-control"
+                                                type="email"
+                                                onChange={(e) => setSEmail(e.target.value)}
                                                 value={email}
                                                 required
                                             />
@@ -99,28 +154,42 @@ const Register = (props) => {
                                     <div className="logreg_for_1">
                                         <div className="logreg_for_2">
                                             <p>Password</p>
-                                            <input
+                                            {/* <input
                                                 type="password"
                                                 id="inputPassword"
                                                 className="form-control"
-                                                // placeholder="Password"
                                                 name="password"
                                                 onChange={handleChange}
                                                 value={password}
+                                                required
+                                            /> */}
+                                            <input
+                                                controlId="password"
+                                                className="form-control"
+                                                type="password"
+                                                value={password}
+                                                onChange={(e) => setSPassword(e.target.value)}
                                                 required
                                             />
                                         </div>
                                         <div className="logreg_for_2">
 
                                             <p>Confirm Your Password</p>
-                                            <input
+                                            {/* <input
                                                 type="password"
                                                 id="inputRePassword"
                                                 className="form-control"
-                                                // placeholder="Confirm Password"
                                                 name="passwordConfirm"
                                                 onChange={handleChange}
                                                 value={passwordConfirm}
+                                                required
+                                            /> */}
+                                            <input
+                                                controlId="confirmPassword"
+                                                className="form-control"
+                                                type="password"
+                                                value={confirmPassword}
+                                                onChange={(e) => setConfirmSPassword(e.target.value)}
                                                 required
                                             />
                                         </div>
@@ -129,10 +198,7 @@ const Register = (props) => {
                                         Sign up
                                     </button>
                                     <hr />
-                                    {
-                                        console.log(props.fromTo, "props.fromTo")
-                                    }
-                                    <Link to={props.fromTo}>
+                                    <Link to={'/products'}>
                                         <i className="fas fa-user-plus"></i>  <span onClick={() => { setButtonPopup(false) }} >Login with Your Account</span>
                                     </Link>
                                 </form>
