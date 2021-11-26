@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
-import { getUserDetails } from '../redux/action'
+import { getUserDetails, updateUserProfile } from '../redux/action'
 import Login from './Login'
 import './Register.css'
 import { register } from '../redux/action'
@@ -68,6 +68,9 @@ const Profile = (props) => {
     // console.log(userInfo.name, "user1")
     // console.log(userDetails, "user2")
 
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile)
+    const { success } = userUpdateProfile
+
     useEffect(() => {
         if (!userInfo) {
             // history.push('/login')
@@ -84,12 +87,10 @@ const Profile = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         // dispatch
-        if (password !== confirmPassword) {
-            setMessage('Password do not match')
-        } else {
-            dispatch(register(name, email, password))
-        }
+        dispatch(updateUserProfile({ id: user._id, name, email, password }))
     }
+
+
 
     return ((valuesOfProps && closers && buttonPopup)) ? (
         <>
@@ -117,6 +118,11 @@ const Profile = (props) => {
                             </div>
                             {error}
                             {loading && <Spinner />}
+                            {success &&
+                                <div className="alert alert-success" role="alert">
+                                    Your Profile has been Updated
+                                </div>
+                            }
                             <div className="logreg-for" id="logreg-forms">
                                 {/* <form id='form-signin' onSubmit={handleSubmit}> */}
                                 <form id='form-signin' onSubmit={submitHandler}>
@@ -139,7 +145,7 @@ const Profile = (props) => {
                                                 type="text"
                                                 onChange={(e) => setName(e.target.value)}
                                                 value={name}
-                                                required
+
                                             />
                                         </div>
                                         <div className="logreg_for_2">
@@ -159,7 +165,7 @@ const Profile = (props) => {
                                                 type="email"
                                                 onChange={(e) => setSEmail(e.target.value)}
                                                 value={email}
-                                                required
+
                                             />
                                         </div>
                                     </div>
@@ -181,7 +187,7 @@ const Profile = (props) => {
                                                 type="password"
                                                 value={password}
                                                 onChange={(e) => setSPassword(e.target.value)}
-                                                required
+
                                             />
                                         </div>
                                         <div className="logreg_for_2">
@@ -202,7 +208,7 @@ const Profile = (props) => {
                                                 type="password"
                                                 value={confirmPassword}
                                                 onChange={(e) => setConfirmSPassword(e.target.value)}
-                                                required
+
                                             />
                                         </div>
                                     </div>

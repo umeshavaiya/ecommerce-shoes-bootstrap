@@ -24,7 +24,7 @@ const CartScreen = ({ match, location, history }) => {
   }
 
   const checkout = () => {
-    history.push('/login?redirect=shipping');
+    history.push('/shipping');
   }
 
   return (
